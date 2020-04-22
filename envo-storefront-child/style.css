@@ -1,0 +1,64 @@
+/*
+Theme Name: Child theme
+Template: envo-storefront
+
+*/
+
+@import url("../envo-storefront/style.css");
+
+.site-header {
+    padding: 20px 0;
+}
+#site-navigation {
+    background-color: #000;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #2e9bca;
+}
+
+.navbar-default .navbar-nav > li:first-child {
+    background-color: #2e9bca;
+}
+
+/*.navbar-default .navbar-nav > li:first-child:hover {*/
+/*    background-color: #5a5a5a;*/
+/*}*/
+
+.navbar-default .navbar-nav > li:first-child a:hover {
+    color: #000;
+}
+
+.dropdown-menu {
+    padding: 0;
+}
+
+.dropdown-menu > li > a {
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #2e9bca;
+}
+
+.nav > li.active > a:after, .current-page-parent:after {
+    color: #2e9bca;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav li:hover > .dropdown-menu {
+        width: 100%;
+    }
+
+    .navbar-nav > li > a {
+
+    }
+}
+
+
+
