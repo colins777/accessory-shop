@@ -10,4 +10,4 @@
         <?php wp_body_open(); ?>
         <div class="page-wrap">
             <?php get_template_part('template-parts/template-part', 'topnav'); ?>
-            <?php get_template_part('template-parts/template-part', 'head'); ?>
+            

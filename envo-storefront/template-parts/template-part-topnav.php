@@ -1,12 +1,12 @@
-<?php //if (is_active_sidebar('envo-storefront-top-bar-area')) { ?>
-<!--    <div class="top-bar-section container-fluid">-->
-<!--        <div class="--><?php //echo esc_attr(get_theme_mod('top_bar_content_width', 'container')); ?><!--">-->
-<!--            <div class="row">-->
-<!--                --><?php //dynamic_sidebar('envo-storefront-top-bar-area'); ?>
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<?php //} ?>
+<?php if (is_active_sidebar('envo-storefront-top-bar-area')) { ?>
+    <div class="top-bar-section container-fluid">
+        <div class="<?php echo esc_attr(get_theme_mod('top_bar_content_width', 'container')); ?>">
+            <div class="row">
+                <?php dynamic_sidebar('envo-storefront-top-bar-area'); ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 <div class="site-header container-fluid">
     <div class="<?php echo esc_attr(get_theme_mod('header_content_width', 'container')); ?>" >
         <div class="heading-row row" >
@@ -112,69 +112,3 @@
     </nav> 
 </div>
 <?php do_action('envo_storefront_after_menu'); ?>
-
-<?php if(is_front_page()) :?>
-    <section class="s-slider">
-        <div class="slider-item" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/img/slide1.jpg'?>)">
-            <div class="container">
-                <div class="slide-content-wrap">
-                    <div class="slide-content">
-                        <div class="slide-title">
-                            Запчасти и аксессуары скидки до 50%!
-                        </div>
-                        <div class="slide-text">
-                            <a href="#">Заказывайте прямо сейчас!</a>
-                        </div>
-                    </div>
-
-                </div> <!--slide-content-->
-            </div><!--container-->
-        </div> <!--slider-item-->
-
-        <div class="slider-item" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/img/slide2.jpg'?>)">
-            <div class="container">
-                <div class="slide-content-wrap">
-                    <div class="slide-content">
-                        <div class="slide-title">
-                            Защитные стекла и аксессуары скидки до 50%!
-                        </div>
-                        <div class="slide-text">
-                            <a href="#">Заказывайте прямо сейчас!</a>
-                        </div>
-                    </div>
-
-                </div> <!--slide-content-->
-            </div><!--container-->
-        </div> <!--slider-item-->
-    </section><!--s-slider-->
-
-    <section class="main-page-cats">
-        <div class="container">
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/1-3.jpg" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Защитные стекла</h1>
-            </a>
-
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/Spicy_Orange-700x1-1.png" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Чехлы</h1>
-            </a>
-
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/3-2.jpg" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Аккумуляторы</h1>
-            </a>
-        </div> <!--container-->
-    </section>
-<?php endif;?>
-
-
