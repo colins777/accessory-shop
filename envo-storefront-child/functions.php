@@ -2,6 +2,7 @@
 add_action( 'wp_enqueue_scripts', 'register_styles' );
 function register_styles() {
     wp_enqueue_style( 'slick-slider', get_stylesheet_directory_uri() . '/libs/slick-slider/slick.css' );
+    wp_enqueue_style( 'media-css', get_stylesheet_directory_uri() . '/media.css' );
 
     wp_enqueue_script( 'slick-slider',  get_stylesheet_directory_uri() .'/libs/slick-slider/slick.min.js');
     wp_enqueue_script( 'equil-height',  get_stylesheet_directory_uri() .'/libs/main-js/main-js.js');
@@ -49,8 +50,36 @@ function aks_news_block () {
     }
 }
 
+/*вывод кнопки Купить в одтн клик в каталоге товаров*/
+
+add_filter( 'woocommerce_after_shop_loop_item', 'awooc_html_custom_add_to_cart', 5 );
+
+add_filter('woocommerce_product_tabs','change_tabs');
+function change_tabs($tabs){
 
 
+    //изменение названия вкладки отзывы
+    //$tabs['reviews']['title'] = 'Мой заголовок вкладки "отзывы"';
+    $tabs['additional_information']['title'] = 'Характеристики';
+    //расположение вкладки "описание" после отзывов
+   // $tabs['description']['priority'] = 40;
+
+    return $tabs;
+};
+
+
+add_filter('wpcf7_autop_or_not', '__return_false');
+add_filter('wpcf7_form_elements', function($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+
+    return $content;
+});
+
+
+
+/*function my_product_description_tab(){
+    echo 'новое содержимое вкладки "описание"';
+}*/
 
 //remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
 //

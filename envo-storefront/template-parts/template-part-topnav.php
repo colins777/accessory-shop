@@ -40,7 +40,10 @@
                             <select class="header-search-select" name="product_cat">
                                 <option value=""><?php esc_html_e('All Categories', 'envo-storefront'); ?></option>
                                 <?php
+
                                 $categories = get_categories('taxonomy=product_cat');
+
+);
                                 foreach ($categories as $category) {
                                     $option = '<option value="' . esc_attr($category->category_nicename) . '">';
                                     $option .= esc_html($category->cat_name);

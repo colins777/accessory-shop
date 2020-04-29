@@ -27,10 +27,23 @@ $j(function () {
 
         //sidebarMoove();
 
+        /*Equal height for prod cards*/
+
         $j(function() {
             $j('h2.woocommerce-loop-product__title').matchHeight();
         });
 
     });
+
+    // let buyOneClickLayout = function () {
+    //    let a =  $j('.awooc-form-custom-order-sku');
+    //
+    //     a.appendTo($j('.columns-right .wpcf7'));
+    //
+    //     console.log(a);
+    // };
+    // buyOneClickLayout();
+
+
 })
 

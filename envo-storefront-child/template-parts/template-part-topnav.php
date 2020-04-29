@@ -33,26 +33,7 @@
             </div>
             <div class="search-heading col-md-6 col-xs-12">
                 <?php if (class_exists('WooCommerce')) { ?>
-                    <div class="header-search-form">
-                        <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-                            <input type="hidden" name="post_type" value="product" />
-                            <input class="header-search-input" name="s" type="text" placeholder="<?php esc_attr_e('Search products...', 'envo-storefront'); ?>"/>
-                            <select class="header-search-select" name="product_cat">
-                                <option value=""><?php esc_html_e('All Categories', 'envo-storefront'); ?></option>
-                                <?php
-                                $categories = get_categories('taxonomy=product_cat');
-                                foreach ($categories as $category) {
-                                    $option = '<option value="' . esc_attr($category->category_nicename) . '">';
-                                    $option .= esc_html($category->cat_name);
-                                    $option .= ' (' . absint($category->category_count) . ')';
-                                    $option .= '</option>';
-                                    echo $option; // WPCS: XSS OK.
-                                }
-                                ?>
-                            </select>
-                            <button class="header-search-button" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </form>
-                    </div>
+                        <?php echo do_shortcode('[wpdreams_ajaxsearchlite]')?>
                 <?php } ?>
                 <?php if (is_active_sidebar('envo-storefront-header-area')) { ?>
                     <div class="site-heading-sidebar" >
@@ -113,68 +94,7 @@
 </div>
 <?php do_action('envo_storefront_after_menu'); ?>
 
-<?php if(is_front_page()) :?>
-    <section class="s-slider">
-        <div class="slider-item" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/img/slide1.jpg'?>)">
-            <div class="container">
-                <div class="slide-content-wrap">
-                    <div class="slide-content">
-                        <div class="slide-title">
-                            Запчасти и аксессуары скидки до 50%!
-                        </div>
-                        <div class="slide-text">
-                            <a href="#">Заказывайте прямо сейчас!</a>
-                        </div>
-                    </div>
 
-                </div> <!--slide-content-->
-            </div><!--container-->
-        </div> <!--slider-item-->
+<?php get_template_part( 'template-parts/slider-main-page' );?>
 
-        <div class="slider-item" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/img/slide2.jpg'?>)">
-            <div class="container">
-                <div class="slide-content-wrap">
-                    <div class="slide-content">
-                        <div class="slide-title">
-                            Защитные стекла и аксессуары скидки до 50%!
-                        </div>
-                        <div class="slide-text">
-                            <a href="#">Заказывайте прямо сейчас!</a>
-                        </div>
-                    </div>
-
-                </div> <!--slide-content-->
-            </div><!--container-->
-        </div> <!--slider-item-->
-    </section><!--s-slider-->
-
-    <section class="main-page-cats">
-        <div class="container">
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/1-3.jpg" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Защитные стекла</h1>
-            </a>
-
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/Spicy_Orange-700x1-1.png" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Чехлы</h1>
-            </a>
-
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/3-2.jpg" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Аккумуляторы</h1>
-            </a>
-        </div> <!--container-->
-    </section>
-<?php endif;?>
-
-
+<?php get_template_part( 'template-parts/cat-list-main-page' );?>
