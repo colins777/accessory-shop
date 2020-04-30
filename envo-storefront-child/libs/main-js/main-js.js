@@ -19,30 +19,27 @@ $j(function () {
 
 
         let sidebarMoove = function () {
-            $j('#button-sidebar').click(function () {
-                //console.log('1234');
-                $j('#sidebar').css({'display' : 'block', 'left' : 0});
+            $j('#cat-panel').click(function () {
+                    let button = $j('#sidebar');
+                    if((button.hasClass('active')) === false) {
+                        $j('#sidebar').addClass('active');
+                    }
+                    else $j('#sidebar').removeClass('active');
             });
         };
 
-        //sidebarMoove();
+        sidebarMoove();
 
         /*Equal height for prod cards*/
 
         $j(function() {
             $j('h2.woocommerce-loop-product__title').matchHeight();
+            $j('.products .price').matchHeight();
+
         });
 
     });
 
-    // let buyOneClickLayout = function () {
-    //    let a =  $j('.awooc-form-custom-order-sku');
-    //
-    //     a.appendTo($j('.columns-right .wpcf7'));
-    //
-    //     console.log(a);
-    // };
-    // buyOneClickLayout();
 
 
 })

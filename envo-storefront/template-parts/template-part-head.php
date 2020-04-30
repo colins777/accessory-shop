@@ -4,4 +4,3 @@
         if (function_exists('yoast_breadcrumb') && (!is_page_template('template-parts/template-page-builders.php') && !is_home() && !is_front_page() )) {
             yoast_breadcrumb('<p id="breadcrumbs" class="text-left">', '</p>');
         }
-			

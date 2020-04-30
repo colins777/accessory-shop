@@ -6,6 +6,8 @@ get_header();
 
 <!-- start content container -->
 <div class="row">
+
+
     <div class="col-md-<?php envo_storefront_main_content_width_columns(); ?>">
 
 
