@@ -57,22 +57,27 @@
             <div class="navbar-header">
                 <?php if (function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('main_menu')) : ?>
                 <?php elseif (has_nav_menu('main_menu')) : ?>
-                    <span class="navbar-brand brand-absolute visible-xs"><?php esc_html_e('Menu', 'envo-storefront'); ?></span>
-                    <?php if (function_exists('envo_storefront_header_cart') && class_exists('WooCommerce')) { ?>
-                        <div class="mobile-cart visible-xs" >
-                            <?php envo_storefront_header_cart(); ?>
-                        </div>	
-                    <?php } ?>
                     <?php if (function_exists('envo_storefront_my_account') && class_exists('WooCommerce')) { ?>
                         <div class="mobile-account visible-xs" >
                             <?php envo_storefront_my_account(); ?>
+                            <span class="account-title">Кабинет</span>
                         </div>
                     <?php } ?>
-                    <a href="#" id="main-menu-panel" class="open-panel" data-panel="main-menu-panel">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
+                    <div class="menu-cart-wrap">
+                        <?php if (function_exists('envo_storefront_header_cart') && class_exists('WooCommerce')) { ?>
+                            <div class="mobile-cart visible-xs">
+                                <?php envo_storefront_header_cart(); ?>
+                            </div>
+                        <?php } ?>
+                        <div class="mnu-button-wrap">
+                            <a href="#" id="main-menu-panel" class="open-panel" data-panel="main-menu-panel">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                            <span class="navbar-brand brand-absolute visible-xs"><?php esc_html_e('Menu', 'envo-storefront'); ?></span>
+                        </div> <!--mnu-button-wrap-->
+                    </div>
                 <?php endif; ?>
             </div>
             <?php
@@ -88,7 +93,7 @@
                 'walker' => new Envo_Storefront_WP_Bootstrap_Navwalker(),
             ));
             ?>
-        </div>
+        </div> <!--container-->
         <?php do_action('envo_storefront_menu'); ?>
     </nav> 
 </div>

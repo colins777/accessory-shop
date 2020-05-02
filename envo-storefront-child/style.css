@@ -45,9 +45,9 @@ a:active, a:focus {
     display: flex;
 }
 
-.header-contacts {
-    width: 100%;
-    display: flex;
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    margin: 0 0.8% 2.992em 0;
+    width: 24.05%;
 }
 
 .mail-social-wrap {
@@ -827,6 +827,42 @@ color: #fff;
 
 }
 
+.pagination-cat-arrow {
+     width: 24%;
+     height: 100%;
+ }
+
+.pagination-cat-arrow a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+}
+
+.pagination-cat-arrow a .fa {
+    color: #2e9bca;
+}
+
+.woocommerce .woocommerce-pagination ul.page-numbers li, .woocommerce-page .woocommerce-pagination ul.page-numbers li {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 35px;
+}
+
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+    background: #000;
+    color: #fff;
+}
+
 
 /*MOBILE*/
 
@@ -870,13 +906,11 @@ color: #fff;
 
 @media (max-width: 769px) {
 
-    /*Sidebar mobile*/
     #cat-panel {
         display: flex;
         justify-content: space-between;
         order: 2;
         margin-left: auto;
-        /*background-color: #2e9bca;*/
         border: 1px solid #2e9bca;
         border-radius: 5px;
         padding: 5px 10px;
@@ -1018,6 +1052,51 @@ color: #fff;
        font-size: 13px;
     }
 
+    /*Sidebar mobile*/
+    .navbar-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .mobile-account {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-my-account {
+        margin-left: 18px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .account-title {
+        position: absolute;
+        font-size: 12px;
+        left: 10px;
+        top: 37px;
+    }
+
+    .mnu-button-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-cart-wrap {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 100px;
+    }
+
+    .brand-absolute {
+        top: 28px;
+        left: 0;
+    }
+    .open-panel {
+        right: 0;
+    }
 
 
 

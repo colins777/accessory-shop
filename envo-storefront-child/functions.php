@@ -22,7 +22,7 @@ function ma_hide_title_shop ($hide) {
 }
 
 //Output products pagination after showing 12 cards
-add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 12;' ), 20 );
+add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 39;' ), 20 );
 
 
 //Discounts goods
@@ -61,16 +61,6 @@ function change_tabs($tabs){
     return $tabs;
 };
 
-//add_action('woocommerce_before_shop_loop', 'add_mobile_button_filters', 40);
-
-/*function add_mobile_button_filters () {
-                  if ( is_tax( 'product_cat' ) || is_shop() ) {
-              echo  '<a href="#" id="cat-panel">
-                    <span class="mobile-filter">Фильтры</span>
-                </a>';
-               }
-}*/
-
 add_action( 'woocommerce_breadcrumb', 'add_mobile_button_filters', 1);
 
 function add_mobile_button_filters () {
@@ -78,7 +68,7 @@ function add_mobile_button_filters () {
              <a href="#" id="cat-panel">
                  <span class="cat-panel-title">Фильтр товаров</span>
                     <!--<span class="mobile-filter">Фильтры</span>-->
-                    <img class="mobile-filter" src="<?php echo get_stylesheet_directory_uri() . '/img/icons/icons8-slider-100.png'?>" alt="фильтр товаров" />
+                    <img class="mobile-filter" src="<?php echo get_stylesheet_directory_uri() . '/img/icons/icons8-slider-90.png'?>" alt="фильтр товаров" />
                 </a>
               <?php }
 }
@@ -94,7 +84,6 @@ add_filter('wpcf7_form_elements', function($content) {
 
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
 
-// Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields( $fields ) {
     $fields['shipping']['shipping_postcode']['label'] = 'My new postcode title';
     $fields['shipping']['shipping_state']['label'] = 'My new state title';
@@ -112,12 +101,6 @@ function remove_billing_company_field( $fields ){
 
     return $fields;
 }
-
-//add_action('woocommerce_product_categories_widget_args','woo_current_product_category1');
-//
-//function woo_current_product_category1 ($arg) {
-//    echo $arg = 123;
-//}
 
 add_filter('woocommerce_product_categories_widget_args','woo_current_product_category');
 function woo_current_product_category( $args ){
@@ -138,13 +121,7 @@ function woo_current_product_category( $args ){
             $category_parent = $cat_obj->parent;
         }
 
-    } /*elseif ( is_singular('product') ) {
-
-        $product_category     = wc_get_product_terms( $post->ID, 'product_cat', array( 'orderby' => 'parent', 'fields' => 'all' ) );
-        $current_cat         = end( $product_category );
-        $category_parent     = $current_cat->parent;
-
-    }*/
+    }
 
     //check if current cat has children
     if( ! empty( $current_cat ) )
@@ -182,4 +159,13 @@ function woo_current_product_category( $args ){
 
     return $args;
 
+}
+
+
+add_filter('gettext', 'translate_text');
+add_filter('ngettext', 'translate_text');
+
+function translate_text($translated) {
+    $translated = str_ireplace('Подытог', 'Итого', $translated);
+    return $translated;
 }

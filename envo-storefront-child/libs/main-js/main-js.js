@@ -28,15 +28,41 @@ $j(function () {
             });
         };
 
-        sidebarMoove();
 
         /*Equal height for prod cards*/
 
         $j(function() {
             $j('h2.woocommerce-loop-product__title').matchHeight();
             $j('.products .price').matchHeight();
-
+            $j('.product').matchHeight();
         });
+
+
+        let changeTranslation = function () {
+            $j('.woocommerce-mini-cart__total strong').html('Всего:');
+        };
+
+
+        let nextProductCategoryArrow = function () {
+
+            let lastChildCat = $j('.col-md-9 > ul.products');
+                let cloned = $j('.woocommerce-pagination .next').clone().html('<i class="fa fa-arrow-circle-right"></i>');
+                    cloned.wrap('<li class="product pagination-cat-arrow"></li>').parent()
+                    .appendTo(lastChildCat);
+
+                   let productHeight = $j('.product').outerHeight();
+                   console.log(productHeight);
+                   let calcHeight = (productHeight/2)-22;
+
+                    $j('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});
+
+        };
+
+
+
+        sidebarMoove();
+        changeTranslation();
+        nextProductCategoryArrow();
 
     });
 
