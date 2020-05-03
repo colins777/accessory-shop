@@ -35,6 +35,17 @@ body {
     src: url("fonts/RalewayRegular/RalewayRegular.eot?#iefix") format("embedded-opentype"), url("fonts/RalewayRegular/RalewayRegular.woff") format("woff"), url("fonts/RalewayRegular/RalewayRegular.ttf") format("truetype");
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 a:active, a:focus {
     color: #000;
     outline: none;
@@ -441,6 +452,10 @@ color: #000;
     margin-bottom: 0;
 }
 
+.woocommerce a.added_to_cart {
+    color: #fff;
+}
+
 
 
 /*Product card inside*/
@@ -642,13 +657,45 @@ color: #fff;
 
 .footer-descr {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
 }
+
+.footer-contacts .header-contact a {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
 
 .footer-descr h3 {
 font-size: 14px;
     color: #fff;
+}
+
+.footer-column--right {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.footer-column .icons img {
+    width: 40px;
+    height: auto;
+}
+
+
+.footer-column  .icons-title {
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer-column .privacy-policy {
+    color: #fff;
+    font-size: 12px;
 }
 
 /*Buy one click*/
@@ -723,12 +770,17 @@ font-size: 14px;
     margin-top: 7px;
 }
 
-/*Cart*/
+/*Cart PAGE*/
 .woocommerce-cart-form__cart-item .product-name a {
     color: #000;
 }
 
-/*Cart*/
+
+
+
+
+/*CHECKOUT*/
+
 .woocommerce button.button, .checkout-button.button.alt.wc-forward {
     color: #2e9bca;
     transition: all .3s ease;
@@ -841,6 +893,11 @@ color: #fff;
 
 .pagination-cat-arrow a .fa {
     color: #2e9bca;
+    transition: all .3s ease;
+}
+
+.pagination-cat-arrow a:hover .fa {
+    color: #000;
 }
 
 .woocommerce .woocommerce-pagination ul.page-numbers li, .woocommerce-page .woocommerce-pagination ul.page-numbers li {
@@ -1043,6 +1100,42 @@ color: #fff;
         width: 100%;
         margin-bottom: 20px;
     }
+
+
+
+/*    CART PAGE MOBILE 769*/
+.woocommerce-cart-form__cart-item .product-quantity {
+    display: flex!important;
+    justify-content: space-between!important;
+}
+
+
+    /*FOOTER*/
+    .footer-descr {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-contacts {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .footer-descr h3 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    .footer-column--right {
+        flex-direction: column;
+        align-items: center;
+        flex: 2;
+    }
+
+
+
+
 
 }
 
