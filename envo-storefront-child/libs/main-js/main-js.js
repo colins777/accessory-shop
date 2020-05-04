@@ -51,7 +51,7 @@ $j(function () {
                     .appendTo(lastChildCat);
 
                    let productHeight = $j('.product').outerHeight();
-                   console.log(productHeight);
+                   //console.log(productHeight);
                    let calcHeight = (productHeight/2)-22;
 
                     $j('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});

@@ -51,6 +51,10 @@ a:active, a:focus {
     outline: none;
 }
 
+p {
+    font-size: 16px;
+}
+
 .header-contacts {
     width: 100%;
     display: flex;
@@ -523,11 +527,20 @@ color: #fff;
 
 /*Category block main page*/
 
+.main-page-cats .container {
+     flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+ }
+
+.main-page-cats .container > *:not(:nth-child(3n)){
+    margin-right: 2%;
+}
 .main-page-cat {
      color: #000;
      text-transform: uppercase;
      position: relative;
-     width: 30%;
+     width: 32%;
      height: 300px;
      display: flex;
      justify-content: center;
@@ -536,9 +549,10 @@ color: #fff;
     -webkit-box-shadow: 8px 11px 6px -8px rgba(0,0,0,0.75);
     -moz-box-shadow: 8px 11px 6px -8px rgba(0,0,0,0.75);
     box-shadow: 8px 11px 6px -8px rgba(0,0,0,0.75);
-    //border: 2px solid transparent;
-
+    margin-bottom: 20px;
  }
+
+
 
 .main-page-cat:hover {
     color: #fff;
@@ -818,6 +832,10 @@ color: #fff;
     border-bottom: 3px solid #2e9bca!important;
 }
 
+#billing_country_field {
+    display: none;
+}
+
 
 /*SIDEBAR*/
 
@@ -921,6 +939,13 @@ color: #fff;
 }
 
 
+/*About Page*/
+
+.about-page {
+    padding: 50px 0;
+}
+
+
 /*MOBILE*/
 
 @media (min-width: 768px) {
@@ -989,6 +1014,8 @@ color: #fff;
         height: 30px;
     }
 
+    /*SIDEBAR max-width 769px*/
+
     #sidebar {
         position: fixed;
         top: 0;
@@ -1004,6 +1031,8 @@ color: #fff;
 
     #sidebar.active {
         left: 0;
+        box-shadow: 0 1px 3px rgba(54,74,178,0.16), 0 2px 2px rgba(54,74,178,0.04), 0 0 2px rgba(54,74,179,0.08);
+
     }
 
 
@@ -1014,6 +1043,9 @@ color: #fff;
     .widget-title h3 {
         background-color: #2e9bca;
         display: block;
+    }
+    .widget-title h3:after {
+        width: 0;
     }
 
 
@@ -1164,11 +1196,19 @@ color: #fff;
 
     }
 
+    .header-login {
+        margin-top: -5px;
+    }
+
     .account-title {
         position: absolute;
         font-size: 12px;
         left: 10px;
-        top: 37px;
+        top: 34px;
+    }
+
+    .header-cart-inner {
+        margin-top: 3px;
     }
 
     .mnu-button-wrap {
@@ -1191,6 +1231,13 @@ color: #fff;
         right: 0;
     }
 
+
+    /*PRODUCT INSIDE*/
+    .woocommerce div.product form.cart .button, .product #awooc-custom-order-button.awooc-custom-order.button.alt.show-add-to-card {
+        font-size: 14px;
+        text-align: center;
+        padding: 10px 10px;
+    }
 
 
 

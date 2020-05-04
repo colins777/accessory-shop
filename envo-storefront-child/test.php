@@ -1,30 +1,30 @@
-<?php
-//Романич, [24.04.20 21:05]
-//чекай, всеодно не поняв що ти маєш на увазі тіпа підключкення файл, ти тіпа у функції include '*.php' будеш писати?
-//
-//    Романич, [24.04.20 21:05]
-//add_action( 'woocommerce_before_shop_loop', 'ma_discounts_block');
-//function ma_discounts_block() {
-//    include '*.php';
-//}
-//
-//Романич, [24.04.20 21:05]
-//таке?
-//
-//    Mykola Mykolayovych, [24.04.20 21:06]
-//ага типу такого
-//
-//Романич, [24.04.20 21:06]
-//нічо
-//
-//Романич, [24.04.20 21:06]
-//просто у файлі може не працювати звичайний цикл
-//
-//Романич, [24.04.20 21:06]
-//тіпа have_posts()
-//
-//Романич, [24.04.20 21:07]
-//треба буде доставати через wp_query
-//
-//Романич, [24.04.20 21:07]
-//$query->post()
+<?php if(is_front_page()) :?>
+    <section class="main-page-cats">
+        <div class="container">
+            <?php ?>
+            <a href="#" class="main-page-cat">
+                <div class="main-page__cat-img">
+                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/1-3.jpg" alt=""
+                         class="wp-image-202"/>
+                </div>
+                <h1>Защитные стекла</h1>
+            </a>
+
+            <a href="#" class="main-page-cat">
+                <div class="main-page__cat-img">
+                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/Spicy_Orange-700x1-1.png" alt=""
+                         class="wp-image-202"/>
+                </div>
+                <h1>Чехлы</h1>
+            </a>
+
+            <a href="#" class="main-page-cat">
+                <div class="main-page__cat-img">
+                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/3-2.jpg" alt=""
+                         class="wp-image-202"/>
+                </div>
+                <h1>Аккумуляторы</h1>
+            </a>
+        </div> <!--container-->
+    </section>
+<?php endif;?>

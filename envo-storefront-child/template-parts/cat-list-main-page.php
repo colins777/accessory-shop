@@ -1,29 +1,28 @@
 <?php if(is_front_page()) :?>
     <section class="main-page-cats">
         <div class="container">
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/1-3.jpg" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Защитные стекла</h1>
-            </a>
+            <?php
+            $prod_cat_args = array(
+                'taxonomy'    => 'product_cat',
+                'orderby'     => 'id',
+                'hide_empty'  => true,
+                'parent'      => 0
+            );
 
-            <a href="#" class="main-page-cat">
-                <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/Spicy_Orange-700x1-1.png" alt=""
-                         class="wp-image-202"/>
-                </div>
-                <h1>Чехлы</h1>
-            </a>
+    $woo_categories = get_categories( $prod_cat_args );
 
-            <a href="#" class="main-page-cat">
+    foreach ( $woo_categories as $woo_cat ) :
+        $woo_cat_id = $woo_cat->term_id;
+        $woo_cat_name = $woo_cat->name;
+            $category_thumbnail_id = get_term_meta($woo_cat_id, 'thumbnail_id', true);
+        $thumbnail_image_url = wp_get_attachment_url($category_thumbnail_id);?>
+        <a href="<?php echo get_term_link( $woo_cat_id, 'product_cat' )?>" class="main-page-cat">
                 <div class="main-page__cat-img">
-                    <img src="http://accessory-shop.loc/wp-content/uploads/2020/04/3-2.jpg" alt=""
-                         class="wp-image-202"/>
+                    <img src="<?php echo $thumbnail_image_url?>" class="wp-image-202"/>
                 </div>
-                <h1>Аккумуляторы</h1>
+                <h1><?php echo $woo_cat_name?></h1>
             </a>
+        <?php endforeach; wp_reset_query(); ?>
         </div> <!--container-->
     </section>
 <?php endif;?>
