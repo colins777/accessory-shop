@@ -24,7 +24,7 @@
 
             <div class="footer-column footer-column--right">
                 <span class="icons-title">Работаем с системами платежей Visa и Mastercard</span>
-                <a class="privacy-policy" href="<?php echo get_home_url() .'/privacy-policy';?>">Политика конфеденциальности</a>
+                <a class="privacy-policy" href="<?php echo get_home_url() .'/privacy-policy';?>">Пользовательское соглашение</a>
                 <div class="icons">
                     <img src="<?php echo get_stylesheet_directory_uri() . '/img/icons/payment-systems/icons8-mastercard-logo.svg' ?>" alt="Работа с платежной системой Mastercard"/>
                     <img src="<?php echo get_stylesheet_directory_uri() . '/img/icons/payment-systems/icons8-visa.svg' ?>" alt="Работа с платежной системой Mastercard"/>

@@ -41,6 +41,10 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+#site-content {
+    padding: 0;
+}
+
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
@@ -659,10 +663,57 @@ color: #fff;
     background-color: #2e9bca;
 }
 
+/*NEWS LIST*/
+.aks-news-main.top {
+    margin-top: 15px;
+}
 
+/*NEWS ITEM*/
 
+.news-thumb {
+    margin-top: 14px;
+    margin-bottom: 35px;
+}
 
-/*FOOTER*/
+.single-head.has-thumbnail {
+   position: inherit;
+}
+
+.type-post .single-title {
+    position: relative;
+}
+
+.type-post .single-title:before {
+    content: "";
+    height: 3px;
+    display: block;
+    width: 30px;
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    background-color: #2e9bca;
+}
+
+.type-post .single-entry-summary p {
+    padding-top: 30px;
+}
+
+.type-post .single-content {
+    padding-bottom: 30px;
+}
+
+.type-post .nav-links a {
+    padding: 10px;
+    border: 1px solid #b5b5b5;
+}
+
+.type-post .nav-links a:hover {
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+}
+
+    /*FOOTER*/
 
 .footer {
     padding: 20px 0;
@@ -893,9 +944,6 @@ color: #fff;
 }
 
 /*PAGINATION*/
-.woocommerce-pagination {
-
-}
 
 .pagination-cat-arrow {
      width: 24%;
@@ -933,16 +981,54 @@ color: #fff;
     line-height: 35px;
 }
 
-.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current, nav.navigation.pagination .current {
     background: #000;
     color: #fff;
 }
 
+/*Pagination blog*/
+
+.navigation.pagination .page-numbers {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+nav.navigation.pagination .nav-links a:first-child {
+    border-left: 1px solid #b5b5b5;
+}
+
+.navigation.pagination .page-numbers:hover {
+color: #fff;
+    background-color: #000;
+
+}
+
+
+.navigation.pagination .nav-links {
+    display: flex;
+    justify-content: center;
+}
+
+nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
+    border-left: none;
+}
+
+.page-numbers.dots {
+    border-top: 1px solid #b5b5b5;
+    border-bottom: 1px solid #b5b5b5;
+    border-right: 1px solid #b5b5b5;
+
+}
 
 /*About Page*/
 
+
 .about-page {
-    padding: 50px 0;
+
 }
 
 

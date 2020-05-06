@@ -169,3 +169,17 @@ function translate_text($translated) {
     $translated = str_ireplace('Подытог', 'Итого', $translated);
     return $translated;
 }
+
+
+if (!function_exists('envo_storefront_prev_next_links')) :
+
+    function envo_storefront_prev_next_links() {
+        the_post_navigation(
+            array(
+                'prev_text' => '<span class="screen-reader-text">' . __('Previous Post', 'envo-storefront') . '</span><span class="nav-title"><span class="nav-title-icon-wrapper"><i class="fa fa-arrow-left"></i></span>%title</span>',
+                'next_text' => '<span class="screen-reader-text">' . __('Next Post', 'envo-storefront') . '</span><span class="nav-title">%title<span class="nav-title-icon-wrapper"><i class="fa fa-arrow-right"></i></span></span>',
+            )
+        );
+    }
+
+endif;

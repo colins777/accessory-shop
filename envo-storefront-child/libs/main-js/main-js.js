@@ -52,17 +52,31 @@ $j(function () {
 
                    let productHeight = $j('.product').outerHeight();
                    //console.log(productHeight);
-                   let calcHeight = (productHeight/2)-22;
+                   let calcHeight = (productHeight/2)-42;
 
                     $j('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});
 
         };
+
+        let newPaginationArrows = function () {
+
+            let nextArrow = '<i class="fa fa-arrow-right"></i>';
+            let prevArrow = '<i class="fa fa-arrow-left"></i>'
+            $j('.navigation.pagination .next.page-numbers').html(nextArrow);
+            $j('.navigation.pagination .prev.page-numbers').html(prevArrow);
+
+            $j('.woocommerce-pagination .next.page-numbers').html(nextArrow);
+            $j('.woocommerce-pagination .prev.page-numbers').html(prevArrow);
+
+
+        }
 
 
 
         sidebarMoove();
         changeTranslation();
         nextProductCategoryArrow();
+        newPaginationArrows();
 
     });
 
