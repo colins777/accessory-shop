@@ -1,8 +1,9 @@
 <?php get_header(); ?> 
 
 <!-- start content container -->
+<div class="container">
 <div class="row">
-    <div class="col-md-12">
+
         <div class="aks-news-main top">
         <?php
 
@@ -22,9 +23,9 @@
         endif;
         ?>
         </div> <!--aks-news-main top-->
-    </div> <!--col-md-12-->
+
 
 </div> <!--row-->
-
+</div>
 
 <?php get_footer(); ?>

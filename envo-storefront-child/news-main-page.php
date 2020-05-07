@@ -1,14 +1,14 @@
 <div class="row">
     <div class="container">
-        <div class="aks-news-main">
+        <div class="aks-news-main main-page">
         <?php $news = new WP_Query(array('category_name' => 'news', 'posts_per_page' => 3));
         //var_dump($news);
         while ($news->have_posts()) :
             $news->the_post(); ?>
 
 
-            <div class="col-md-4">
-                <div class="news-item has-thumbnail">
+
+                <div class="news-item has-thumbnail news-item__32">
                 <div class="news-thumb">
                     <?php the_post_thumbnail() ?>
                     <div class="news-text-wrap">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 </div>
-            </div>
+
         <?php endwhile;
         wp_reset_postdata();
         ?>

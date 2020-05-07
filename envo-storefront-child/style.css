@@ -7,7 +7,7 @@ Template: envo-storefront
 @import url("../envo-storefront/style.css");
 
 body {
-    font-family: 'RobotoRegular', Sans-serif;
+    font-family: 'RalewayRegular', Sans-serif;
     color: #000;
 }
 
@@ -41,9 +41,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-#site-content {
-    padding: 0;
-}
+
 
 /* Firefox */
 input[type=number] {
@@ -59,14 +57,30 @@ p {
     font-size: 16px;
 }
 
+/*HEADERS H1*/
+
+.page h1.single-title {
+    margin-bottom: 50px;
+}
+
+
 .header-contacts {
     width: 100%;
     display: flex;
 }
 
+/*.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {*/
+/*    margin: 0 0.8% 2.992em 0;*/
+/*    width: 24.05%;*/
+/*}*/
+
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-    margin: 0 0.8% 2.992em 0;
-    width: 24.05%;
+    margin-bottom: 2.992em;
+    width: 24.25%;
+}
+
+.woocommerce ul.products li.product:not(:nth-child(4n)), .woocommerce-page ul.products li.product:not(:nth-child(4n)) {
+    margin-right: 1%;
 }
 
 .mail-social-wrap {
@@ -82,6 +96,8 @@ p {
     font-size: 16px;
     display: flex;
     align-items: center;
+    font-family: 'RobotoRegular', Sans-serif;
+    font-weight: bold;
 }
 
 .header-contacts > * {
@@ -90,10 +106,10 @@ p {
 
 .header-contact {
 display: flex;
-    align-items: center;
+align-items: center;
 }
 
-.header-contact .fa {
+.header-contact .fab, .header-contact .fas {
      margin-right: 5px;
      font-size: 20px;
  }
@@ -187,9 +203,19 @@ display: flex;
 
 /*Cart*/
 
+span.woocommerce-Price-amount {
+    font-family: 'RobotoRegular', Sans-serif!important;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
 .amount-cart {
     background: #2e9bca;
+    font-family: 'RobotoRegular', Sans-serif;
+    font-weight: bold;
 }
+
 
 .amount-cart:before {
     border-right: 7px solid #2e9bca;
@@ -362,9 +388,15 @@ color: #000;
 
 /*Cart*/
 
+.woocommerce-Price-amount .amount {
+    font-family: 'RobotoRegular', Sans-serif;
+}
+
 .woocommerce ul.cart_list li a, .woocommerce ul.product_list_widget li a {
     font-size: 14px;
     color: #000;
+    font-family: 'RobotoRegular', Sans-serif;
+
 }
 
 .woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
@@ -448,6 +480,8 @@ color: #000;
     font-weight: bold;
     font-size: 18px;
     color: #ff2c4f;
+    font-family: 'RobotoRegular', Sans-serif;
+    font-weight: bold;
 }
 
 .woocommerce span.onsale {
@@ -473,9 +507,18 @@ color: #000;
     line-height: 25px;
 }
 
+.product_meta .posted_in {
+     color: #000;
+     font-weight: bold;
+     font-family: 'RobotoRegular', Sans-serif;
+    font-size: 16px;
+ }
+
 .product_meta .posted_in a {
     color: #000;
     font-weight: bold;
+    font-family: 'RobotoRegular', Sans-serif;
+    font-size: 14px;
 }
 .woocommerce button.button.alt, .woocommerce input.button.alt .product .cart .single_add_to_cart_button, #awooc-custom-order-button.awooc-custom-order.button.alt.show-add-to-card, .woocommerce #review_form #respond .form-submit input {
     margin-right: 10px;
@@ -527,6 +570,16 @@ color: #fff;
     color: #ff2c4f;
     font-weight: bold;
     font-family: 'RalewayRegular', Sans-serif;
+}
+
+.product_meta .sku_wrapper {
+    font-family: 'RobotoRegular', Sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.product_meta .sku_wrapper span {
+    font-size: 14px;
 }
 
 /*Category block main page*/
@@ -631,6 +684,16 @@ color: #fff;
 
 /*NEWS MAIN PAGE*/
 
+.aks-news-main.main-page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.aks-news-main .news-item.news-item__32 {
+    width: 32%;
+}
+
+
 .aks-news-main .aks-entry-title a {
     font-size: 25px;
     font-family: 'RalewayBold', Sans-serif;
@@ -638,7 +701,7 @@ color: #fff;
 
 .aks-news-main p {
     font-size: 16px;
-    line-height: 18px;
+    line-height: 22px;
 }
 
 .aks-button-wrap {
@@ -665,7 +728,7 @@ color: #fff;
 
 /*NEWS LIST*/
 .aks-news-main.top {
-    margin-top: 15px;
+    margin-top: 6px;
 }
 
 /*NEWS ITEM*/
@@ -683,7 +746,7 @@ color: #fff;
     position: relative;
 }
 
-.type-post .single-title:before {
+.type-post .single-title:before, .type-page .single-title:before {
     content: "";
     height: 3px;
     display: block;
@@ -731,6 +794,7 @@ color: #fff;
     font-size: 14px;
     margin-bottom: 5px;
     font-weight: bold;
+    font-family: 'RobotoRegular', Sans-serif;
 }
 
 
@@ -782,20 +846,20 @@ font-size: 14px;
     background-color: #2e9bca;
 }
 
-.wpcf7 input[type="url"], .wpcf7 input[type="text"], .wpcf7 input[type="tel"] {
-    font-family: 'RalewayRegular', Sans-serif!important;
-    background: transparent!important;
-    background-clip: padding-box!important;
-    border: 1px solid #a9a9a9!important;
-    border-radius: 2px!important;
-    font-size: 14px!important;
-    height: 42px!important;
-    line-height: 1.4!important;
-    padding: 0 15px!important;
-    vertical-align: baseline!important;
-    width: 100%!important;
-    box-sizing: border-box!important;!important;
-    margin-bottom: 10px!important;
+.wpcf7-f303-o1 input[type="url"], .wpcf7 input[type="text"], .wpcf7 input[type="tel"] {
+    font-family: 'RalewayRegular', Sans-serif;
+    background: transparent;
+    background-clip: padding-box;
+    border: 1px solid #a9a9a9;
+    border-radius: 2px;
+    font-size: 14px;
+    height: 42px;
+    line-height: 1.4;
+    padding: 0 15px;
+    vertical-align: baseline;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 .wpcf7 input[type=text]:focus, input[type=password]:focus, input[type=text]:focus, input[type=tel]:focus, input[type=search]:focus, input[type=number]:focus, input[type=datetime]:focus, input[type=email]:focus {
@@ -819,6 +883,7 @@ font-size: 14px;
 
 .awooc-sku-wrapper, .awooc-sku {
     font-size: 14px;
+    font-family: 'RobotoRegular', Sans-serif;
 }
 
 
@@ -1026,16 +1091,151 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
 
 /*About Page*/
 
+.about-advantages__title {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
 
-.about-page {
+.about-advantages__wrap {
+     margin: 100px 0 50px 0;
+     display: flex;
+     align-items: center;
+ }
+
+.about-page__content p {
+    padding-bottom: 50px;
+}
+
+.about-advantages__wrap > *:not(:last-child) {
+    margin-right: 2%;
+}
+
+.about-advantages__item {
+    width: 31.33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-advantages__descr {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'RalewayRegular', Sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.about-advantages__descr p {
+    font-weight: bold;
+}
+
+.about-advantages__square--wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.about-advantages__square--main {
+    position: absolute;
+    transform: rotate(45deg);
+    width: 100px;
+    height: 100px;
+    background-color: #2e9bca;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-advantages__square--top {
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    background-color: #5fb6dc;
+    bottom: -22px;
+    left: 0;
+    z-index: 1;
+    transform: rotate(45deg);
+}
+
+.about-advantages__square--bottom {
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    background-color: #26ace6;
+    bottom: -20px;
+    top: -25px;
+    left: 0;
+    z-index: 2;
+    transform: rotate(45deg);
+}
+
+.about-advantages__square--main .fa {
+    transform: rotate(-45deg);
+    font-size: 50px;
+    color: #fff;
 
 }
 
+.main-wrap {
+    position: relative;
+}
+
+/*CONTACT PAGE*/
+
+.contact-page__wrap {
+    display: flex;
+}
+
+.contact-page__col {
+    width: 48%;
+}
+
+.contact-page__address span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.contact-page__address__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.contact-page__address__list li {
+    padding-bottom: 5px;
+}
+
+.contact-page__address__list a {
+    color: #000;
+    font-family: 'RobotoRegular', Sans-serif;
+    font-size: 18px;
+}
+.contact-page__address__list a i {
+    margin-right: 10px;
+}
+
+.contact-page__col form textarea {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.contact-page__col form input[type="text"], .contact-page__col form input[type="email"] {
+font-size: 16px;
+}
 
 /*MOBILE*/
 
 @media (min-width: 768px) {
-
+    #site-content {
+        padding: 0;
+    }
     #cat-panel{
         display: none;
     }
@@ -1135,7 +1335,7 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
     }
 
 
-/*    Cat page mobile*/
+/*    Category page 769*/
 
     .woocommerce-result-count, .woocommerce-ordering {
         display: none;
@@ -1162,8 +1362,6 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
         margin-bottom: 5px;
     }
 
-
-
     .header-contact {
         margin-right: 0;
     }
@@ -1174,6 +1372,11 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
 
     .navbar-default .navbar-nav > li > a {
         color: #000;
+        padding: 22px 10px;
+    }
+
+    .navbar-default .navbar-nav > li > a:first-child {
+        padding-right: 15px;
     }
 
     #my-menu .dropdown-menu > li > a {
@@ -1325,6 +1528,17 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
         padding: 10px 10px;
     }
 
+    /*About Page*/
+
+    .about-advantages__wrap {
+        flex-direction: column;
+        margin: 100px 0 0px 0;
+    }
+
+    .about-advantages__item {
+        width: 100%;
+        margin-bottom: 60px;
+    }
 
 
 }

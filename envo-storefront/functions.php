@@ -236,7 +236,7 @@ function envo_storefront_theme_stylesheets() {
     // Theme stylesheet.
     wp_enqueue_style('envo-storefront-stylesheet', get_stylesheet_uri(), array('bootstrap'), ENVO_STOREFRONT_VERSION);
     // Load Font Awesome css.
-    wp_enqueue_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0');
+    //wp_enqueue_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0');
 
 }
 

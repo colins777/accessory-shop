@@ -2,6 +2,7 @@
 add_action( 'wp_enqueue_scripts', 'register_styles' );
 function register_styles() {
     wp_enqueue_style( 'slick-slider', get_stylesheet_directory_uri() . '/libs/slick-slider/slick.css' );
+    wp_enqueue_style( 'fontawesome', get_stylesheet_directory_uri() . '/libs/fontawesome/css/all.min.css' );
 
     wp_enqueue_script( 'slick-slider',  get_stylesheet_directory_uri() .'/libs/slick-slider/slick.min.js');
     wp_enqueue_script( 'equil-height',  get_stylesheet_directory_uri() .'/libs/main-js/main-js.js');
@@ -26,9 +27,6 @@ add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 39;' ), 20 )
 
 
 //Discounts goods
-//
-
-
 
 add_filter( 'the_title', 'remove_page_title', 10, 2 );
 function remove_page_title( $title, $id ) {
@@ -39,17 +37,18 @@ function remove_page_title( $title, $id ) {
     return $title;
 }
 
-add_action('get_footer', 'aks_news_block');
 
-function aks_news_block () {
+/*Add news block before footer*/
+add_action('get_footer', 'add_news_block_before_footer');
+function add_news_block_before_footer () {
     if (is_front_page()) {
-        echo '<h1 class=\'main-page-block__title\'>Новости</h1>';
+        echo '<div class="container"><h1 class=\'main-page-block__title\'>Новости</h1></div>';
         get_template_part( 'news-main-page' );
 
     }
 }
 
-/*вывод кнопки Купить в одтн клик в каталоге товаров*/
+/*вывод кнопки Купить в один клик в каталоге товаров*/
 
 add_filter( 'woocommerce_after_shop_loop_item', 'awooc_html_custom_add_to_cart', 5 );
 
@@ -61,13 +60,15 @@ function change_tabs($tabs){
     return $tabs;
 };
 
+
+/*Mobile Filter button for sidebar*/
+
 add_action( 'woocommerce_breadcrumb', 'add_mobile_button_filters', 1);
 
 function add_mobile_button_filters () {
                   if ( is_tax( 'product_cat' ) || is_shop() ) { ?>
              <a href="#" id="cat-panel">
                  <span class="cat-panel-title">Фильтр товаров</span>
-                    <!--<span class="mobile-filter">Фильтры</span>-->
                     <img class="mobile-filter" src="<?php echo get_stylesheet_directory_uri() . '/img/icons/icons8-slider-90.png'?>" alt="фильтр товаров" />
                 </a>
               <?php }
@@ -171,6 +172,7 @@ function translate_text($translated) {
 }
 
 
+/*Change buttons in pagination page blog default storefront function*/
 if (!function_exists('envo_storefront_prev_next_links')) :
 
     function envo_storefront_prev_next_links() {
@@ -183,3 +185,20 @@ if (!function_exists('envo_storefront_prev_next_links')) :
     }
 
 endif;
+
+
+add_action('woocommerce_before_main_content', 'open_container_wrapper_prod_archive', 40);
+
+function open_container_wrapper_prod_archive () { ?>
+
+        <div class="container-fluid">
+
+ <?php }
+
+add_action('woocommerce_after_main_content', 'close_container_wrapper_prod_archive', 30);
+
+function close_container_wrapper_prod_archive () { ?>
+    </div>
+<?php }
+
+

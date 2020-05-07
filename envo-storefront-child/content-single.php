@@ -1,4 +1,5 @@
 <!-- start content container -->
+<div class="container">
 <div class="row">
     <article class="col-md-12">
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>                         
@@ -23,5 +24,6 @@
             <?php get_template_part('content', 'none'); ?>        
         <?php endif; ?>    
     </article>
+</div>
 </div>
 <!-- end content container -->
