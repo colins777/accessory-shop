@@ -36,6 +36,7 @@ $j(function () {
             $j('.products .price').matchHeight();
             $j('.product').matchHeight();
             $j('.about-advantages__descr p').matchHeight();
+            $j('.woocommerce .equal-height').matchHeight();
 
         });
 

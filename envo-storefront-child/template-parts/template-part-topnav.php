@@ -1,12 +1,3 @@
-<?php //if (is_active_sidebar('envo-storefront-top-bar-area')) { ?>
-<!--    <div class="top-bar-section container-fluid">-->
-<!--        <div class="--><?php //echo esc_attr(get_theme_mod('top_bar_content_width', 'container')); ?><!--">-->
-<!--            <div class="row">-->
-<!--                --><?php //dynamic_sidebar('envo-storefront-top-bar-area'); ?>
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<?php //} ?>
 <div class="site-header container-fluid">
     <div class="<?php echo esc_attr(get_theme_mod('header_content_width', 'container')); ?>" >
         <div class="heading-row row" >

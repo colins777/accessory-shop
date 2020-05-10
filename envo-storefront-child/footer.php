@@ -6,7 +6,13 @@
         <div class="footer-descr">
             <div class="footer-column">
                 <div class="footer-contacts">
-                    <?php dynamic_sidebar( 'envo-storefront-footer-area-left' ); ?>
+                   <!-- --><?php /*dynamic_sidebar( 'envo-storefront-footer-area-left' ); */?>
+                    <div class="header-contact"><a href="tel:<?php the_field('contact_page_phone1', 146); ?>"><i class="fas fa-phone-square-alt"></i><?php the_field('contact_page_phone1', 146); ?></a></div>
+                    <div class="header-contact"><a href="tel:<?php the_field('contact_page_phone2', 146); ?>"><i class="fas fa-phone-square-alt"></i><?php the_field('contact_page_phone1', 146); ?></a></div>
+                    <div class="mail-social-wrap">
+                        <div class="header-contact"><a href="mailto:<?php the_field('contact_page_email', 146); ?>"><i class="fas fa-envelope"></i><?php the_field('contact_page_email', 146); ?></a></div>
+
+                    </div>
                 </div>
             </div><!--footer-column-->
 

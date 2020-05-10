@@ -56,3 +56,6 @@ array(
 
     <?php endif;?>
 </ul>
+
+
+[woocommerce_my_account]
