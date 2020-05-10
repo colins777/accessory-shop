@@ -5,8 +5,8 @@ function register_styles() {
     wp_enqueue_style( 'fontawesome', get_stylesheet_directory_uri() . '/libs/fontawesome/css/all.min.css' );
 
     wp_enqueue_script( 'slick-slider',  get_stylesheet_directory_uri() .'/libs/slick-slider/slick.min.js');
-    wp_enqueue_script( 'equil-height',  get_stylesheet_directory_uri() .'/libs/main-js/main-js.js');
-    wp_enqueue_script( 'main-js',  get_stylesheet_directory_uri() .'/libs/equal-height/jquery.matchHeight.js');
+    wp_enqueue_script( 'main',  get_stylesheet_directory_uri() .'/libs/main-js/main.js');
+    wp_enqueue_script( 'equil-height',  get_stylesheet_directory_uri() .'/libs/equal-height/jquery.matchHeight.js');
 
 }
 
@@ -187,18 +187,54 @@ if (!function_exists('envo_storefront_prev_next_links')) :
 endif;
 
 
-add_action('woocommerce_before_main_content', 'open_container_wrapper_prod_archive', 40);
 
-function open_container_wrapper_prod_archive () { ?>
+/*Add custom sidebar to footer*/
 
-        <div class="container-fluid">
+function replace_widjets_content() {
+    remove_action( 'widgets_init', 'envo_storefront_widgets_init' );
+}
+add_action( 'wp_loaded', 'replace_widjets_content' );
+add_action( 'widgets_init', 'child_envo_storefront_widgets_init' );
 
- <?php }
+function child_envo_storefront_widgets_init () {
 
-add_action('woocommerce_after_main_content', 'close_container_wrapper_prod_archive', 30);
+    register_sidebar(
+        array(
+            'name' => 'Footer Section Left',
+            'id' => 'envo-storefront-footer-area-left',
+            'before_widget' => '<div id="%1$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<div class="widget-title"><h3>',
+            'after_title' => '</h3></div>',
+        )
+    );
 
-function close_container_wrapper_prod_archive () { ?>
-    </div>
-<?php }
+    register_sidebar(
+        array(
+            'name' => 'Footer Section Center',
+            'id' => 'envo-storefront-footer-area-center',
+            'before_widget' => '<div id="%1$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<div class="widget-title"><h3>',
+            'after_title' => '</h3></div>',
+        )
+    );
+}
 
 
+add_action( 'pre_get_posts',  'set_posts_per_page'  );
+function set_posts_per_page( $query ) {
+
+    global $wp_the_query;
+
+//    if ((is_category('news')) && ( $query->is_search() ) ) {
+    if (is_category('news'))   {
+        $query->set( 'posts_per_page', 4 );
+    }
+    elseif ( ( $query->is_search() )) {
+        $query->set( 'posts_per_page', 12 );
+    }
+    // Etc..
+
+    return $query;
+}

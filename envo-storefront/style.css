@@ -1354,10 +1354,10 @@ span.comments-meta i {
     min-width: 150px;
     padding-left: 0;
 }
-.header-right .fa, .mobile-cart .fa, .mobile-account .fa {
-    font-family: "fontawesome" !important;
-    font-weight: initial !important;
-}
+/*.header-right .fa, .mobile-cart .fa, .mobile-account .fa {*/
+/*    font-family: "fontawesome" !important;*/
+/*    font-weight: initial !important;*/
+/*}*/
 .header-cart, .header-my-account {
     float: right;
     display: block;

@@ -71,7 +71,25 @@ $j(function () {
             $j('.woocommerce-pagination .prev.page-numbers').html(prevArrow);
 
 
-        }
+        };
+
+
+        let stickFooter = function () {
+            let windowHeight = $j(window).outerHeight();
+            let headerHeight = $j('.site-header').outerHeight();
+            let headerHeightMenu = $j('#site-navigation').outerHeight();
+            let centerSection = $j('#site-content').outerHeight();
+            let footerHeight = $j('.footer.container-fluid').outerHeight();
+
+            let newCenterSectionHeight =  windowHeight - headerHeight - footerHeight - headerHeightMenu;
+
+            if (centerSection < newCenterSectionHeight) {
+                $j('#site-content').outerHeight(newCenterSectionHeight);
+            }
+
+        };
+
+
 
 
 
@@ -79,6 +97,7 @@ $j(function () {
         changeTranslation();
         nextProductCategoryArrow();
         newPaginationArrows();
+        stickFooter();
 
     });
 

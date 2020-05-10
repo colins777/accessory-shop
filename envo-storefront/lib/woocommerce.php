@@ -5,7 +5,7 @@ if (!function_exists('envo_storefront_cart_link')) {
     function envo_storefront_cart_link() {
         ?>	
         <a class="cart-contents" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php esc_html_e('View your shopping cart', 'envo-storefront'); ?>">
-            <i class="fa fa-shopping-bag"><span class="count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count()); ?></span></i>
+            <i class="fas fa-shopping-bag"><span class="count"><?php echo wp_kses_data(WC()->cart->get_cart_contents_count()); ?></span></i>
             <div class="amount-cart"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></div> 
         </a>
         <?php
@@ -59,7 +59,7 @@ if (!function_exists('envo_storefront_my_account')) {
             <div class="header-my-account">
                 <div class="header-login"> 
                     <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" title="<?php esc_attr_e('My Account', 'envo-storefront'); ?>">
-                        <i class="fa fa-user-circle-o"></i>
+                        <i class="fas fa-user-circle"></i>
                     </a>
                 </div>
             </div>

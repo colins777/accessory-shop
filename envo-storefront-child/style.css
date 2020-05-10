@@ -69,10 +69,6 @@ p {
     display: flex;
 }
 
-/*.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {*/
-/*    margin: 0 0.8% 2.992em 0;*/
-/*    width: 24.05%;*/
-/*}*/
 
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
     margin-bottom: 2.992em;
@@ -126,7 +122,19 @@ align-items: center;
 
 /*SEARCH*/
 
+.search-page .main-page-block__title {
+    margin-bottom: 34px;
+}
+
+
 /*MAIN NENU*/
+
+.header-right .fas, .mobile-cart .fas, .mobile-account .fas {
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'!important;
+    font-weight: 900!important;
+}
+
+
 #site-navigation {
     background-color: #000;
     border: none
@@ -827,6 +835,11 @@ font-size: 14px;
     font-size: 12px;
 }
 
+.footer-descr .widget.widget_custom_html {
+    margin-bottom: 0;
+}
+
+
 /*Buy one click*/
 
 .woocommerce .awooc-custom-order-wrap .wpcf7-form-control.wpcf7-submit {
@@ -906,8 +919,28 @@ font-size: 14px;
 }
 
 
+.woocommerce a.button.wc-backward {
+    margin-right: 10px;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    border: 1px solid #2e9bca;
+    color: #2e9bca;
+    border-radius: 3px;
+    font-size: 20px;
+    font-family: 'RalewayRegular', Sans-serif;
+}
 
+.woocommerce a.button.wc-backward:hover {
+    color: #fff;
+    background-color: #2e9bca;
+}
 
+.woocommerce-error::before, .woocommerce-info::before, .woocommerce-message::before {
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    content: "\f290";
+    font-weight: 900;
+}
 
 /*CHECKOUT*/
 
@@ -945,7 +978,6 @@ color: #fff;
 }
 .woocommerce-checkout .page h1.single-title {
     padding-bottom: 20px!important;
-    border-bottom: 3px solid #2e9bca!important;
 }
 
 #billing_country_field {
@@ -1012,7 +1044,7 @@ color: #fff;
 
 .pagination-cat-arrow {
      width: 24%;
-     height: 100%;
+    margin-right: 0!important;
  }
 
 .pagination-cat-arrow a {
@@ -1230,6 +1262,32 @@ nav.navigation.pagination .nav-links a, nav.navigation.pagination .current {
 font-size: 16px;
 }
 
+
+/*orderreceived Page*/
+
+.woocommerce table.shop_table td a {
+    color: #000;
+}
+
+
+/*404 PAGE*/
+
+input.search-submit {
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    border: 1px solid #2e9bca;
+    color: #2e9bca;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+input.search-submit:hover {
+color: #fff;
+    background-color: #2e9bca;
+}
+
+
 /*MOBILE*/
 
 @media (min-width: 768px) {
@@ -1239,6 +1297,18 @@ font-size: 16px;
     #cat-panel{
         display: none;
     }
+
+    /*MAIN MENU*/
+    li.menu-item-has-children>a:before {
+        font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands'!important;
+        content: "\f107";
+        margin-left: 10px;
+        font-size: 15px;
+        right: 2px;
+        position: absolute;
+        font-weight: 900!important;
+    }
+
 
     .dropdown-menu > li > a:hover:before {
         position: absolute;
@@ -1273,6 +1343,12 @@ font-size: 16px;
 }
 
 @media (max-width: 769px) {
+
+    .cart-contents span.count {
+        top: -14px;
+        right: -15px;
+        background-color: #000;
+    }
 
     #cat-panel {
         display: flex;
@@ -1431,7 +1507,7 @@ font-size: 16px;
 }
 
 
-    /*FOOTER*/
+    /*FOOTER max-width 769*/
     .footer-descr {
         flex-direction: column;
         align-items: center;
@@ -1454,8 +1530,27 @@ font-size: 16px;
         flex: 2;
     }
 
+    .footer-descr .textwidget {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 
+
+    /*NEWS MAIN PAGE 768*/
+
+    .aks-news-main.main-page {
+        flex-direction: column;
+    }
+    .aks-news-main .news-item.news-item__32 {
+        width: 100%;
+    }
+    .aks-news-main .news-item.news-item__32 .news-thumb img {
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
 
 
 }
@@ -1538,6 +1633,23 @@ font-size: 16px;
     .about-advantages__item {
         width: 100%;
         margin-bottom: 60px;
+    }
+
+    /*Category Page max-width 480*/
+
+    .woocommerce ul.products li.product .button {
+        font-size: 14px;
+    }
+
+    /*orderreceived Page*/
+
+    .woocommerce ul.order_details {
+        padding: 0;
+    }
+
+    /*Search page 480px*/
+    .search-page.woocommerce ul.products li.product {
+        width: 100%;
     }
 
 
