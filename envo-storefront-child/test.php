@@ -57,5 +57,26 @@ array(
     <?php endif;?>
 </ul>
 
+addedToCartMessage = function () {
+$j('.button.product_type_simple').click(function () {
+//$j(this).click(function () {
 
-[woocommerce_my_account]
+let buttonGoToCardStyles = {
+'border': '1px solid #2e9bca',
+'color': '#2e9bca',
+'border-radius': '3px',
+'font-size': '18px',
+'width': '100%',
+'margin-top': '5px',
+'padding': '6px'
+};
+//let buttonForReplace = $j(this).parent().find('.product_type_simple');
+let buttonForReplace = $j(this);
+setTimeout(function () {
+//let buttonGoToCard = $j(this).find('.added_to_cart.wc-forward').css(buttonGoToCardStyles);
+let buttonGoToCard = $j(this).find('.added_to_cart.wc-forward').attr('href');
+console.log(buttonGoToCard);
+$j(buttonForReplace).replaceWith(buttonGoToCard);
+}, 1500);
+})
+};

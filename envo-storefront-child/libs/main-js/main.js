@@ -74,7 +74,6 @@ $j(function () {
 
         };
 
-
         let stickFooter = function () {
             let windowHeight = $j(window).outerHeight();
             let headerHeight = $j('.site-header').outerHeight();
@@ -90,16 +89,11 @@ $j(function () {
 
         };
 
-
-
-
-
         sidebarMoove();
         changeTranslation();
         nextProductCategoryArrow();
         newPaginationArrows();
         stickFooter();
-
     });
 
 
