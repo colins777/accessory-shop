@@ -83,25 +83,25 @@ add_filter('wpcf7_form_elements', function($content) {
     return $content;
 });
 
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
-
-function custom_override_checkout_fields( $fields ) {
-    $fields['shipping']['shipping_postcode']['label'] = 'My new postcode title';
-    $fields['shipping']['shipping_state']['label'] = 'My new state title';
-    return $fields;
-}
+//add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+//
+//function custom_override_checkout_fields( $fields ) {
+//    $fields['shipping']['shipping_postcode']['label'] = 'My new postcode title';
+//    $fields['shipping']['shipping_state']['label'] = 'My new state title';
+//    return $fields;
+//}
 
 
 
 //remove_billing_company_field
-add_filter( 'woocommerce_checkout_fields', 'remove_billing_company_field' );
+//add_filter( 'woocommerce_checkout_fields', 'remove_billing_company_field' );
 
-function remove_billing_company_field( $fields ){
-    unset( $fields['billing']['billing_company'] );
-    unset( $fields['shipping']['shipping_company'] );
-
-    return $fields;
-}
+//function remove_billing_company_field( $fields ){
+//    unset( $fields['billing']['billing_company'] );
+//    unset( $fields['shipping']['shipping_company'] );
+//
+//    return $fields;
+//}
 
 add_filter('woocommerce_product_categories_widget_args','woo_current_product_category');
 function woo_current_product_category( $args ){
@@ -227,4 +227,68 @@ function set_posts_per_page( $query ) {
     // Etc..
 
     return $query;
+}
+
+
+/*
+ * Добавляем часть формы к фрагменту
+ * hide fields from pickup method
+ */
+add_filter( 'woocommerce_update_order_review_fragments', 'awoohc_add_update_form_billing', 99 );
+function awoohc_add_update_form_billing( $fragments ) {
+
+    $checkout = WC()->checkout();
+    ob_start();
+
+    echo '<div class="woocommerce-billing-fields__field-wrapper">';
+
+    $fields = $checkout->get_checkout_fields( 'billing' );
+    foreach ( $fields as $key => $field ) {
+        if ( isset( $field['country_field'], $fields[ $field['country_field'] ] ) ) {
+            $field['country'] = $checkout->get_value( $field['country_field'] );
+        }
+        woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+    }
+
+    echo '</div>';
+
+    $art_add_update_form_billing              = ob_get_clean();
+    $fragments['.woocommerce-billing-fields'] = $art_add_update_form_billing;
+
+    return $fragments;
+}
+
+
+add_filter( 'woocommerce_checkout_fields', 'awoohc_override_checkout_fields' );
+function awoohc_override_checkout_fields( $fields ) {
+    unset( $fields['billing']['billing_company'] );
+    unset( $fields['billing']['billing_address_1'] );
+    unset( $fields['billing']['billing_address_2'] );
+    unset( $fields['billing']['billing_postcode'] );
+    unset( $fields['billing']['billing_state'] );
+    unset( $fields['billing']['billing_last_name'] );
+    unset( $fields['billing']['billing_country'] );
+    unset( $fields['billing']['billing_city'] );
+    unset( $fields['shipping']['shipping_address_1'] );
+    unset( $fields['shipping']['shipping_address_2'] );
+    unset( $fields['shipping']['shipping_city'] );
+    unset( $fields['shipping']['shipping_state'] );
+    unset( $fields['shipping']['shipping_country'] );
+
+
+
+
+    //var_dump($fields);
+    //$fields['billing']['billing_city']['label']          = 'Город';
+    $fields['billing']['billing_first_name']['class'][0] = 'form-row-wide';
+    $fields['billing']['billing_email']['class'][0]      = 'form-row-last';
+    $fields['billing']['billing_phone']['class'][0]      = 'form-row-first';
+    $chosen_methods                                      = WC()->session->get( 'chosen_shipping_methods' );
+//    if ( 'flat_rate:4' === $chosen_methods[0] ) {
+//        $fields['billing']['class'][0] = 'form-row-first';
+//    } else {
+//        unset( $fields['billing']['billing_number_post_office'] );
+//    }
+
+    return $fields;
 }
