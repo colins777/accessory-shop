@@ -44,6 +44,17 @@
             </div>
         </div>
     </div> <!--container-->
+
+
+    <div class="map">
+        <div class="container">
+<!--            <iframe src="https://www.google.com/maps/d/embed?mid=1RHqOFWsKbx96tdzdoGB8OiL2kIgcRCCn" width="100%" height="480"></iframe>-->
+            <?php echo do_shortcode('[leaflet-map lat=46.639843 lng=32.610383 zoom=17 zoomcontrol scrollwheel detect-retina] [leaflet-marker]Адрес магазина:  г. Херсон, ул. Потемкинская 42А[/leaflet-marker]')?>
+        </div>
+
+    </div>
+
 </div>
 
 <?php get_footer(); ?>
+

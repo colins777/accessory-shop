@@ -7,6 +7,7 @@
         <?php wp_head(); ?>
     </head>
     <body id="blog" <?php body_class(); ?>>
+    <div id="preloader" class="visible"></div>
         <?php wp_body_open(); ?>
         <div class="page-wrap">
             <?php get_template_part('template-parts/template-part', 'topnav'); ?>

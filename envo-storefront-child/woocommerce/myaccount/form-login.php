@@ -120,6 +120,11 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
                     <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
                 </p>
 
+                <p class="woocommerce-form-row form-row">
+                    <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
+                    <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
+                </p>
+
             <?php else : ?>
 
                 <p><?php esc_html_e( 'A password will be sent to your email address.', 'woocommerce' ); ?></p>
@@ -127,11 +132,6 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
             <?php endif; ?>
 
             <?php do_action( 'woocommerce_register_form' ); ?>
-
-            <p class="woocommerce-form-row form-row">
-                <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
-                <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register', 'woocommerce' ); ?></button>
-            </p>
 
             <?php do_action( 'woocommerce_register_form_end' ); ?>
 
