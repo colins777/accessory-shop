@@ -1030,10 +1030,6 @@ button#place_order:focus {
     padding-bottom: 20px!important;
 }
 
-/*#billing_country_field {*/
-/*    display: none;*/
-/*}*/
-
 
 /*SIDEBAR*/
 
@@ -1378,6 +1374,10 @@ color: #fff;
 }
 
 /*MyAcoount Page*/
+
+.header-my-account a:focus {
+    color: #00acec;
+}
 
 .woocommerce-MyAccount-content .woocommerce-Button.button  {
     transition: all 0.3s ease-in-out;
@@ -2018,7 +2018,7 @@ background-color: #00acec;
     }
 
     .type-post .single-title:before, .type-page .single-title:before {
-        bottom: 8px;
+        bottom: -4px;
     }
 
 
