@@ -16,11 +16,12 @@ loadData()
 
 
 
-let $j = jQuery.noConflict();
+// let $ = jQuery.noConflict();
 
-$j(function () {
-    $j(document).ready(function () {
-        $j('.s-slider').slick({
+jQuery(function($) {
+
+    $(document).ready(function () {
+        $('.s-slider').slick({
             dots: true,
             autoplay: false,
             infinite: true,
@@ -37,45 +38,45 @@ $j(function () {
 
 
         let sidebarMoove = function () {
-            $j('#cat-panel').click(function () {
-                    let button = $j('#sidebar');
-                    if((button.hasClass('active')) === false) {
-                        $j('#sidebar').addClass('active');
-                    }
-                    else $j('#sidebar').removeClass('active');
+            $('#cat-panel').click(function () {
+                let button = $('#sidebar');
+                if((button.hasClass('active')) === false) {
+                    $('#sidebar').addClass('active');
+                }
+                else $('#sidebar').removeClass('active');
             });
         };
 
 
         /*Equal height for prod cards*/
 
-        $j(function() {
-            $j('h2.woocommerce-loop-product__title').matchHeight();
-            $j('.products .price').matchHeight();
-            $j('.product').matchHeight();
-            $j('.about-advantages__descr p').matchHeight();
-            $j('.woocommerce .equal-height').matchHeight();
+        $(function() {
+            $('h2.woocommerce-loop-product__title').matchHeight();
+            $('.products .price').matchHeight();
+            $('.product').matchHeight();
+            $('.about-advantages__descr p').matchHeight();
+            $('.woocommerce .equal-height').matchHeight();
 
         });
 
 
         let changeTranslation = function () {
-            $j('.woocommerce-mini-cart__total strong').html('Всего:');
+            $('.woocommerce-mini-cart__total strong').html('Всего:');
         };
 
 
         let nextProductCategoryArrow = function () {
 
-            let lastChildCat = $j('.col-md-9 > ul.products');
-                let cloned = $j('.woocommerce-pagination .next').clone().html('<i class="fa fa-arrow-circle-right"></i>');
-                    cloned.wrap('<li class="product pagination-cat-arrow"></li>').parent()
-                    .appendTo(lastChildCat);
+            let lastChildCat = $('.col-md-9 > ul.products');
+            let cloned = $('.woocommerce-pagination .next').clone().html('<i class="fa fa-arrow-circle-right"></i>');
+            cloned.wrap('<li class="product pagination-cat-arrow"></li>').parent()
+                .appendTo(lastChildCat);
 
-                   let productHeight = $j('.product').outerHeight();
-                   //console.log(productHeight);
-                   let calcHeight = (productHeight/2)-42;
+            let productHeight = $('.product').outerHeight();
+            //console.log(productHeight);
+            let calcHeight = (productHeight/2)-42;
 
-                    $j('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});
+            $('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});
 
         };
 
@@ -83,38 +84,86 @@ $j(function () {
 
             let nextArrow = '<i class="fa fa-arrow-right"></i>';
             let prevArrow = '<i class="fa fa-arrow-left"></i>'
-            $j('.navigation.pagination .next.page-numbers').html(nextArrow);
-            $j('.navigation.pagination .prev.page-numbers').html(prevArrow);
+            $('.navigation.pagination .next.page-numbers').html(nextArrow);
+            $('.navigation.pagination .prev.page-numbers').html(prevArrow);
 
-            $j('.woocommerce-pagination .next.page-numbers').html(nextArrow);
-            $j('.woocommerce-pagination .prev.page-numbers').html(prevArrow);
+            $('.woocommerce-pagination .next.page-numbers').html(nextArrow);
+            $('.woocommerce-pagination .prev.page-numbers').html(prevArrow);
 
 
         };
 
         let stickFooter = function () {
-            let windowHeight = $j(window).outerHeight();
-            let headerHeight = $j('.site-header').outerHeight();
-            let headerHeightMenu = $j('#site-navigation').outerHeight();
-            let centerSection = $j('#site-content').outerHeight();
-            let footerHeight = $j('.footer.container-fluid').outerHeight();
+            let windowHeight = $(window).outerHeight();
+            let headerHeight = $('.site-header').outerHeight();
+            let headerHeightMenu = $('#site-navigation').outerHeight();
+            let centerSection = $('#site-content').outerHeight();
+            let footerHeight = $('.footer.container-fluid').outerHeight();
 
             let newCenterSectionHeight =  windowHeight - headerHeight - footerHeight - headerHeightMenu;
 
             if (centerSection < newCenterSectionHeight) {
-                $j('#site-content').outerHeight(newCenterSectionHeight);
+                $('#site-content').outerHeight(newCenterSectionHeight);
             }
 
         };
+
+
+        let filterCategoriesAjax = function () {
+            let $mainBox = $('.products.columns-4');
+
+            $('.widget_product_categories a').click(function (e) {
+                e.preventDefault();
+
+                let linkCat = $(this).attr('href');
+                let titleCat = $(this).text();
+
+                document.title = titleCat;
+                //записуємо в історію браузера переходи по посиланню
+                history.pushState({
+                    page_title: titleCat
+                }, titleCat, linkCat);
+
+                ajaxCat(linkCat);
+            });
+
+
+            //Відслідковування подій натиснення кнопок в браузері вперед назад
+
+            window.addEventListener("popstate", function (event) {
+                document.title = event.state.page_title;
+                ajaxCat(location.href);
+            }, false);
+
+            //making ajax request
+
+            function ajaxCat (linkCat) {
+                $mainBox.animate({opacity: 0.5}, 300);
+
+                $.post (
+                    myPlugin.ajaxurl,
+                    {
+                        action: 'get_cat',
+                        link: linkCat
+                    },
+
+                    function (response) {
+                        $mainBox
+                            .html(response)
+                            .animate({opacity: 1}, 300);
+                    });
+
+            };
+
+        }
 
         sidebarMoove();
         changeTranslation();
         nextProductCategoryArrow();
         newPaginationArrows();
         stickFooter();
+        filterCategoriesAjax();
     });
 
-
-
-})
+});
 

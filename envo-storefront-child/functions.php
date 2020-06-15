@@ -5,8 +5,19 @@ function register_styles() {
     wp_enqueue_style( 'fontawesome', get_stylesheet_directory_uri() . '/libs/fontawesome/css/all.min.css' );
 
     wp_enqueue_script( 'slick-slider',  get_stylesheet_directory_uri() .'/libs/slick-slider/slick.min.js');
-    wp_enqueue_script( 'main',  get_stylesheet_directory_uri() .'/libs/main-js/main.js');
+
+    //wp_localize_script для виводу динамічних даних, дод дані для файла main.js
+
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', get_stylesheet_directory_uri() .'/libs/jquery/jquery-3.5.1.min.js', false, null, true );
+
     wp_enqueue_script( 'equil-height',  get_stylesheet_directory_uri() .'/libs/equal-height/jquery.matchHeight.js');
+    wp_enqueue_script( 'main',  get_stylesheet_directory_uri() .'/libs/main-js/main.js');
+
+    wp_localize_script('main', 'myPlugin', array (
+        'ajaxurl' => admin_url('admin-ajax.php') //ajaxurl - власт обєкта myPlugin
+    ));
+
 
 }
 
@@ -291,4 +302,36 @@ function awoohc_override_checkout_fields( $fields ) {
 //    }
 
     return $fields;
+}
+
+
+/*Ajax cat filter*/
+
+    add_action('wp_ajax_get_cat', 'ajax_show_posts_in_cat');
+add_action('wp_ajax_nopriv_get_cat', 'ajax_show_posts_in_cat');
+
+function ajax_show_posts_in_cat () {
+    $link = ! empty($_POST['link']) ? esc_attr($_POST['link']) : false;
+
+    $slug = $link ? wp_basename($link) : false; //wp_basename($link) бере останню частину посилання
+
+    var_dump($slug);
+    $cat = 'get_category_by_slug($slug)';
+//    $cat = batteries;
+    var_dump($cat);
+
+        if (! $cat) {
+            die ('Категория не найдена');
+        }
+
+        query_posts(array(
+                'posts_per_page' => get_option('posts_per_page'),
+                'post_status' => 'publish',
+            'category_name' => $cat->slug
+        ));
+
+        require plugin_dir_path(__FILE__) . 'woocommerce/archive-product.php';
+
+        wp_die();
+
 }
