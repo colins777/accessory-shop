@@ -50,15 +50,15 @@ jQuery(function($) {
 
         /*Equal height for prod cards*/
 
-        $(function() {
+        const setEqualHeight = function () {
             $('h2.woocommerce-loop-product__title').matchHeight();
             $('.products .price').matchHeight();
             $('.product').matchHeight();
             $('.about-advantages__descr p').matchHeight();
             $('.woocommerce .equal-height').matchHeight();
+        };
 
-        });
-
+        setEqualHeight();
 
         let changeTranslation = function () {
             $('.woocommerce-mini-cart__total strong').html('Всего:');
@@ -76,7 +76,12 @@ jQuery(function($) {
             //console.log(productHeight);
             let calcHeight = (productHeight/2)-42;
 
-            $('.pagination-cat-arrow a .fa').css({'margin-top' : calcHeight});
+         let prodHeight = $('.product').height();
+
+            $('.pagination-cat-arrow a .fa').css({
+                'margin-top' : calcHeight,
+                'height' : prodHeight
+            });
 
         };
 
@@ -112,7 +117,7 @@ jQuery(function($) {
         let filterCategoriesAjax = function () {
             let $mainBox = $('.products.columns-4');
 
-            $('.widget_product_categories a').click(function (e) {
+            $('.widget_product_categories .product-categories a').click(function (e) {
                 e.preventDefault();
 
                 let linkCat = $(this).attr('href');
@@ -123,6 +128,10 @@ jQuery(function($) {
                 history.pushState({
                     page_title: titleCat
                 }, titleCat, linkCat);
+
+                $('.widget_product_categories .product-categories li.current-cat').removeClass( 'current-cat' );
+
+                $(this).parents('li').addClass( 'current-cat' );
 
                 ajaxCat(linkCat);
             });
@@ -146,11 +155,12 @@ jQuery(function($) {
                         action: 'get_cat',
                         link: linkCat
                     },
-
                     function (response) {
-                        $mainBox
-                            .html(response)
-                            .animate({opacity: 1}, 300);
+                        $mainBox.html(response);
+
+                        setEqualHeight();
+
+                        $mainBox.animate({opacity: 1}, 300);
                     });
 
             };

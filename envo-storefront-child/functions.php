@@ -315,23 +315,35 @@ function ajax_show_posts_in_cat () {
 
     $slug = $link ? wp_basename($link) : false; //wp_basename($link) бере останню частину посилання
 
-    var_dump($slug);
-    $cat = 'get_category_by_slug($slug)';
-//    $cat = batteries;
-    var_dump($cat);
+    $cat = get_term_by( 'slug', $slug, 'product_cat' );
 
-        if (! $cat) {
-            die ('Категория не найдена');
+    if (! $cat) {
+        wp_die('Категория не найдена');
+    }
+
+    query_posts([
+        'post_type'      => [ 'product' ],
+        'post_status'    => 'publish',
+        'order'          => 'ASC',
+        'posts_per_page' => -1,
+        'tax_query' => [
+            [
+                'taxonomy' => 'product_cat',
+                'field' => 'term_id',
+                'terms' => $cat->term_id,
+                'operator' => 'IN'
+            ]
+        ]
+    ]);
+
+    if ( have_posts() ) {
+        while ( have_posts() ) {
+            the_post();
+
+            echo get_template_part( 'woocommerce/content-product' );
         }
+    }
 
-        query_posts(array(
-                'posts_per_page' => get_option('posts_per_page'),
-                'post_status' => 'publish',
-            'category_name' => $cat->slug
-        ));
-
-        require plugin_dir_path(__FILE__) . 'woocommerce/archive-product.php';
-
-        wp_die();
+    wp_die();
 
 }
